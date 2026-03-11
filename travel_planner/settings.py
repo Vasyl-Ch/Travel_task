@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "projects.apps.ProjectsConfig",
     "rest_framework",
+    "django_filters",
 ]
 
 MIDDLEWARE = [
@@ -74,7 +75,15 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "travel_planner.wsgi.application"
 
-
+REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.BasicAuthentication",
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+}
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
